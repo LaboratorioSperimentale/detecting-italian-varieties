@@ -1,0 +1,72 @@
+output_folder: ~
+input_folder: 
+  KIP: ~
+  KIPasti: ~
+selected_participants:
+  KIP: ~
+  KIPasti: ~
+
+tratti:
+  - name: sticazzi
+    type: VOC
+    accepted_elements:
+      - sticazzi
+      - sti cazzi
+      - "'sticazzi"
+      - "'sti cazzi"
+  - name: moroso
+    type: voc
+    accepted_elements:
+      - moroso
+      - morosa
+      - morosi
+      - morose
+  - name: robo
+    type: VOC
+    accepted_elements:
+      - robo
+      - robi
+  - name: veh
+    type: VOC
+    accepted_elements:
+      - veh
+      - ve'
+      - vé
+      - vè
+  - name: soccia
+    type: VOC
+    accepted_elements:
+      - soccia
+  - name: ja
+    type: VOC
+    accepted_elements:
+      - ja
+  - name: boia
+    type: VOC
+    accepted_elements:
+      - boia
+      - boia deh
+      - boia de'
+  - name: neh
+    type: VOC
+    accepted_elements:
+      - neh
+      - ne'
+      - nè
+      - né
+  - name: assai
+    type: VOC
+    accepted_elements:
+      - assai
+  - name: scostumato
+    type: VOC
+    accepted_elements:
+      - scostumato
+      - scostumata
+      - scostumati
+      - scostumate
+  - name: minchia
+    type: VOC
+    accepted_elements: 
+      - minchia
+      

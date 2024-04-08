@@ -1,0 +1,5 @@
+.vscode/
+data*
+.venv/
+*__pycache__*
+div.egg-info/
