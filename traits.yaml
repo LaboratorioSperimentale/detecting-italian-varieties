@@ -1,10 +1,51 @@
-output_folder: ~
-input_folder: 
-  KIP: ~
-  KIPasti: ~
-selected_participants:
-  KIP: ~
-  KIPasti: ~
+output_folder: data/output
+input_folder:
+  KIP: data/KIP_txt
+  KIPasti: data/KIPasti_txt
+selected_conversations:
+  KIP:
+  - BOA3001
+  - BOA3006
+  - BOA3013
+  - BOA3021
+  - BOA3002
+  - BOA3007
+  - BOA3017
+  - BOA3003
+  - BOA3011
+  - BOA3018
+  - BOA3004
+  - BOA3012
+  - BOA3020
+  KIPasti:
+  - KPN002
+  - KPN003
+  - KPN006
+  - KPS004
+  - KPS008
+  - KPS009
+  - KPS010
+  - KPS011
+  - KPS012
+  - KPS013
+  - KPN013
+  - KPN015
+  - KPS014
+  - KPN019
+  - KPN020
+  - KPN021
+  - KPN022
+  - KPN023
+  - KPN024
+  - KPS021
+  - KPS022
+  - KPS023
+  - KPS024
+  - KPS025
+  - KPN025
+  - KPN027
+  - KPN028
+
 
 tratti:
   - name: sticazzi
@@ -15,7 +56,7 @@ tratti:
       - "'sticazzi"
       - "'sti cazzi"
   - name: moroso
-    type: voc
+    type: VOC
     accepted_elements:
       - moroso
       - morosa
@@ -53,7 +94,6 @@ tratti:
       - neh
       - ne'
       - nè
-      - né
   - name: assai
     type: VOC
     accepted_elements:
@@ -67,6 +107,227 @@ tratti:
       - scostumate
   - name: minchia
     type: VOC
-    accepted_elements: 
+    accepted_elements:
       - minchia
-      
+  - name: soccia
+    type: VOC
+    accepted_elements:
+      - soccia
+  - name: te_subj_iobj
+    type: VOC
+    accepted_elements:
+      - te
+  - name: mica
+    type: VOC
+    accepted_elements:
+      - mica
+  - name: mo
+    type: VOC
+    accepted_elements:
+      - mo
+  - name: ciò
+    type: VOC
+    accepted_elements:
+      - ciò
+      - cio
+  - name: ello
+    type: PATTERN
+    accepted_elements:
+      - ello
+      - elle
+      - elli
+      - ella
+    filter_elements:
+      - quello
+      - quelle
+      - quella
+      - quelli
+  - name: otto
+    type: PATTERN
+    accepted_elements:
+      - otto
+      - otti
+      - otta
+      - otte
+    filter_elements:
+      - quarantottos
+  - name: ino
+    type: PATTERN
+    accepted_elements:
+      - ino
+      - ina
+      - ine
+      - ini
+    filter_elements:
+      - polline
+
+  - name: etto
+    type: PATTERN
+    accepted_elements:
+      - etto
+      - etta
+      - ette
+      - etti
+    filter_elements:
+      -
+
+  - name: anche
+    type: VOC
+    accepted_elements:
+      - anche
+  - name: pure
+    type: VOC
+    accepted_elements:
+      - pure
+  - name: adesso
+    type: VOC
+    accepted_elements:
+      - adesso
+  - name: ora
+    type: VOC
+    accepted_elements:
+      - ora
+  - name: va_che
+    type: VOC
+    accepted_elements:
+      - va che
+      - "va' che"
+      - vah che
+  - name: appresso
+    type: VOC
+    accepted_elements:
+      - appresso
+  - name: vicino_a
+    type: VOC
+    accepted_elements:
+      - vicino a
+  - name: pure_che
+    type: VOC
+    accepted_elements:
+      - pure che
+  - name: un_poco
+    type: VOC
+    accepted_elements:
+      - un poco
+  - name: NUM_e_mezza
+    type: VOC
+    accepted_elements:
+      - e mezza
+      - e mezzo
+  - name: stare
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/stare/V"
+  - name: stare_a
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/stare/V [^/]+/a/E"
+  - name: Nposs
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/[^/]+/S [^/]+/[^/]+/AP"
+  - name: Nquesto_quello
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/[^/]+/S [^/]+/[^/]+/A [^/]+/questo/[^ ]+"
+      - "[^/]+/[^/]+/S [^/]+/[^/]+/A [^/]+/quello/[^ ]+"
+      - "[^/]+/[^/]+/S [^/]+/questo/[^ ]+"
+      - "[^/]+/[^/]+/S [^/]+/quello/[^ ]+"
+  - name: Npure
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/[^/]+/S [^/]+/[^/]+/A [^/]+/pure/[^ ]+"
+      - "[^/]+/[^/]+/S [^/]+/pure/[^ ]+"
+  - name: tenere
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/tenere/V"
+  - name: calare
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/calare/V"
+  - name: cacciare
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/cacciare/V"
+  - name: tinto
+    type: VOC
+    accepted_elements:
+      - tinto
+      - tinta
+      - tinti
+      - tinte
+  - name: contare
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/contare/V"
+  - name: forme_apocopate_apice
+    type: PATTERN
+    accepted_elements:
+      - " [^ ]+[aeiou]'"
+    filter_elements:
+      - po'
+  - name: forme_apocopate_accento
+    type: PATTERN
+    accepted_elements:
+      - " [^ ]+[àèéìòù]"
+    filter_elements:
+      - cioè
+      - perché
+      - né
+      - nè
+      - già
+      - sì
+      - vabbè
+      - così
+      - finché
+      - c'è
+      - università
+      - caffè
+      - gesù
+      - farò
+      - farà
+      - sarò
+      - sarà
+      - lunedì
+      - martedì
+      - mercoledì
+      - giovedì
+      - venerdì
+      - però
+      - sé
+      - sè
+      - vabbè
+      - vabbé
+      - tè
+      - caffè
+      - sicchè
+      - sicché
+      - realtà
+      - può
+      - più
+      - giù
+  - name: esserci
+    type: PATTERN
+    accepted_elements:
+      - "c'è [^ ]+ [^ ]+"
+    filter_elements:
+      -
+
+  - name: questoqui_quellili
+    type: PATTERN
+    accepted_elements:
+      - "quest[aoie]( [^ ]+)? qui"
+      - "quell[aoie]( [^ ]+)? lì"
+    filter_elements:
+      -
+
+  - name: andar_v
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/andare/V [^/]+/[^/]+/V"
+      - "[^/]+/venire/V [^/]+/[^/]+/V"
+  - name: sovraesteso_a
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/[^/]+/[^ ]+ a/a/E [^/]+/[^/]+/[^ ]+"

@@ -2,4 +2,5 @@ tqdm
 spacy
 spacy-udpipe
 spacy-conll
-yaml
+pyyaml
+pandas

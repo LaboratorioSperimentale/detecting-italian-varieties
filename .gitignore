@@ -1,5 +1,7 @@
 .vscode/
 data*
 .venv/
+venv39/
 *__pycache__*
 div.egg-info/
+traits*
