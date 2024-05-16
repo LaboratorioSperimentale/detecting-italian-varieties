@@ -1,4 +1,4 @@
-# ICLAVE-12 and ICM submission
+# ICLAVE-12 and ICL submission
 
 * Traits are described in file `TRATTI.md` and defined in `traits.yaml`
 
