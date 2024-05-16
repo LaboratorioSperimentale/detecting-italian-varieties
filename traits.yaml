@@ -331,3 +331,132 @@ tratti:
     type: LEMMA
     accepted_elements:
       - "[^/]+/[^/]+/[^ ]+ a/a/E [^/]+/[^/]+/[^ ]+"
+  - name: su_giù
+    type: VOC
+    accepted_elements:
+    - su
+    - sù
+    - giu
+    - giù
+  - name: sicché
+    type: VOC
+    accepted_elements:
+    - sicché
+    - sicchè
+  - name: ben_vaben
+    type: VOC
+    accepted_elements:
+    - ben
+    - va ben
+  - name: vara
+    type: VOC
+    accepted_elements:
+    - vara
+  - name: già_preV
+    type: LEMMA
+    accepted_elements:
+    - "già/già/B( [^ ]+)?( [^ ]+)?( [^ ]+)?( [^ ]+)? ?[^/]+/[^/]+/V"
+  - name: aus_pp_mai
+    type: LEMMA
+    accepted_elements:
+    - "[^/]+/[^/]+/VA [^ ]+( [^ ]+)?( [^ ]+)? ?mai/mai/B"
+  - name: non_più
+    type: LEMMA
+    accepted_elements:
+    - "non/non/BN( [^ ]+)?( [^ ]+)?( [^ ]+)? ?[^/]+/[^/]+/V( [^ ]+)?( [^ ]+)?( [^ ]+)?( [^ ]+)? ?più/più/B"
+  - name: ce
+    type: VOC
+    accepted_elements:
+    - ce
+  - name: nel_senso
+    type: VOC
+    accepted_elements:
+    - (cioè )?nel senso
+    - (cè )?nel senso
+  - name: ci_sta
+    type: VOC
+    accepted_elements:
+    - ci sta
+  - name: tipo
+    type: VOC
+    accepted_elements:
+    - tipo
+  - name: avoglia
+    type: VOC
+    accepted_elements:
+    - avoglia
+  - name: un_botto
+    type: VOC
+    accepted_elements:
+    - un botto
+  - name: piuttosto_che
+    type: VOC
+    accepted_elements:
+    - piuttosto che
+  - name: figo
+    type: VOC
+    accepted_elements:
+    - fig[oaie]
+    - fighissim[oaie]
+    - figat[ae]
+  - name: no
+    type: VOC
+    accepted_elements:
+    - no
+  - name: un_chef
+    type: LEMMA
+    accepted_elements:
+      - "un/[^/]+/RI (i[aeiou]|z|y|x[^x]|s[bcdfglmnpqrt]|ch|gn|pn|ps)[^/]+/[^/]+/S"
+      - "[^ ]+ei/[^/]+/DI (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+      - "[^ ]+ei/[^/]+/DD (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+      - "[^ ]+ei/[^/]+/RD (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+      - "[^ ]+ei/[^/]+/RI (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+      - "i/[^/]+/RI (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+      - "i/[^/]+/RD (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+      - "il/[^/]+/RD (a|e|i|o|u|z|y|x[^x]|s[bcdfglmnpqrt]|ch|h|gn|pn|ps)[^/]+/[^/]+/S"
+  - name: no_non
+    type: LEMMA
+    accepted_elements:
+      - "no/no/BN [^/'?!]+/[^/]+/[^ ]+"
+      - "no/no/B [^/'?!]+/[^/]+/[^ ]+"
+  - name: elisione_articoli
+    type: LEMMA
+    accepted_elements:
+      - "l'/lo/PC [^/'?!]+/[^/]+/[^ ]+"
+  - name: ci
+    type: VOC
+    accepted_elements:
+      - ci
+      - "c'"
+  - name: doppio_complementatore
+    type: LEMMA
+    accepted_elements:
+      - "[^/]+/[^/]+/B [^/]+/[^/]+/CS"
+  - name: quei
+    type: VOC
+    accepted_elements:
+      - quei
+  - name: che_dici
+    type: VOC
+    accepted_elements:
+      - che dici
+  - name: lì_attualizzatore
+    type: VOC
+    accepted_elements:
+      - lì
+  - name: passato_remoto
+    type: MORPH
+    accepted_elements:
+    - "[^/]+/[^/]+/V/Mood=Ind/Tense=Past"
+    morph_features:
+    - Mood
+    - Tense
+  - name: mancato_accordo
+    type: MORPH
+    accepted_elements:
+    - "[^/]+/[^/]+/S/Gender=Fem .* il/il/RD/Gender=Masc quale/[^ ]+"
+    - "[^/]+/[^/]+/S/Gender=Masc .* la/il/RD/Gender=Fem quale/[^ ]+"
+    - "[^/]+/[^/]+/S/Gender=Masc .* le/il/RD/Gender=Fem quali/[^ ]+"
+    - "[^/]+/[^/]+/S/Gender=Fem .* i/il/RD/Gender=Masc quali/[^ ]+"
+    morph_features:
+    - Gender
