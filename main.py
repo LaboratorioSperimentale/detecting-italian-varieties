@@ -100,7 +100,12 @@ def _extract_feats(args):
 
 def _parse_metadata(args):
 
-	reader.read_metadata(args.kip_metadata, args.kipasti_metadata, args.output_folder)
+	kip_files = args.kip_folder.glob("*.conllu")
+	kipasti_files = args.kipasti_folder.glob("*.conllu")
+
+	reader.read_metadata(args.kip_metadata, args.kipasti_metadata,
+					  kip_files, kipasti_files,
+					  args.output_folder)
 
 
 def _read_traits(args):
@@ -152,9 +157,11 @@ if __name__ == "__main__":
 	parser_conversations = subparsers.add_parser("conversation-metadata", parents=[parent_parser],
 											description="extract conversation metadata",
 											help="extract conversation metadata")
-	parser_conversations.add_argument("--kip-metadata")
-	parser_conversations.add_argument("--kipasti-metadata")
-	parser_conversations.add_argument("-o", "--output-folder")
+	parser_conversations.add_argument("--kip-metadata", type=pathlib.Path)
+	parser_conversations.add_argument("--kipasti-metadata",type=pathlib.Path)
+	parser_conversations.add_argument("--kip-folder", type=pathlib.Path)
+	parser_conversations.add_argument("--kipasti-folder", type=pathlib.Path)
+	parser_conversations.add_argument("-o", "--output-folder", type=pathlib.Path)
 	parser_conversations.set_defaults(func=_parse_metadata)
 
 

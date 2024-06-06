@@ -4,7 +4,10 @@ import json
 
 import pandas as pd
 
+from div.utils import data_reader as du
+
 def read_metadata(kip_metadata_filename, kipasti_metadata_filename,
+				  kip_files, kipasti_files,
 				  output_folder):
 
 	NORD = ["emilia-romagna", "veneto", "lombardia", "piemonte", "valle-d-aosta",
@@ -14,7 +17,8 @@ def read_metadata(kip_metadata_filename, kipasti_metadata_filename,
 	ALTRO = ["estero"]
 
 	participants = {}
-	conversations = collections.defaultdict(lambda: {"participants": [], "setting": None, "area": None, "age_group": None})
+	conversations = collections.defaultdict(lambda: {"participants": set(), "setting": None, "area": None, "age_group": None})
+	not_found = set()
 
 
 	with open(kip_metadata_filename) as fin:
@@ -26,30 +30,56 @@ def read_metadata(kip_metadata_filename, kipasti_metadata_filename,
 									"occupation": line[1],
 									"age": [int(x) for x in line[5].split("-")],
 									"region": line[4]}
-			convs = line[3].strip().split(",")
-			for c in convs:
-				conversations[c.strip()]["participants"].append(line[0])
-				conversations[c.strip()]["setting"] = "interview"
-			# print(conversations)
-			# input()
+			# convs = line[3].strip().split(",")
+			# for c in convs:
+			# 	conversations[c.strip()]["participants"].append(line[0])
+			# 	conversations[c.strip()]["setting"] = "interview"
 
 	with open(kipasti_metadata_filename) as fin:
 		reader = csv.reader(fin, delimiter=',')
 		header = reader.__next__()
-		# print(header)
 		for line in reader:
-			participants[line[0]] = {"code": line[0],
-									"occupation": line[1],
+			participants[line[0]] = {"code": line[0].strip(),
+									"occupation": line[1].strip(),
 									"age": [int(x) for x in line[5].split("-")],
-									"region": line[4]}
-			convs = line[3].strip().split(",")
-			for c in convs:
-				conversations[c.strip()]["participants"].append(line[0])
-				conversations[c.strip()]["setting"] = "dinnertable"
-			# print(conversations)
+									"region": line[4].strip()}
+			# convs = line[3].strip().split(",")
+			# for c in convs:
+			# 	conversations[c.strip()]["participants"].append(line[0])
+			# 	conversations[c.strip()]["setting"] = "dinnertable"
+
+
+	for file in kip_files:
+		turns = du.create_turns_conll(file)
+
+		for turn in turns:
+			conv, speaker, turn = turn
+			speaker = speaker.strip()
+			# print(speaker, speaker in participants)
 			# input()
+			conv = conv.strip()
+			if speaker in participants:
+				conversations[conv]["participants"].add(speaker)
+			else:
+				not_found.add((speaker, conv))
+				print("speaker not in participants", speaker)
+
+	for file in kipasti_files:
+		turns = du.create_turns_conll(file)
+
+		for turn in turns:
+			conv, speaker, turn = turn
+			speaker = speaker.strip()
+			conv = conv.strip()
+			if speaker in participants:
+				conversations[conv]["participants"].add(speaker)
+			else:
+				not_found.add((speaker,conv))
+				print("speaker not in participants", speaker)
+
 
 	for conv in conversations:
+		conversations[conv]["participants"] = list(conversations[conv]["participants"])
 		# print(conv, len(conversations[conv]["participants"]))
 		conv_participants = [participants[x] for x in conversations[conv]["participants"]]
 
@@ -69,12 +99,6 @@ def read_metadata(kip_metadata_filename, kipasti_metadata_filename,
 			conversations[conv]["age_group"] = "homogeneous"
 		else:
 			conversations[conv]["age_group"] = "non-homogeneous"
-
-		# print(len(conversations[conv]["partecipanti"]))
-		# print([participants[x] for x in conversations[conv]["partecipanti"]])
-		# input(conversations[conv])
-		# print(conv_participants)
-		# input()
 
 
 	with open(f"{output_folder}/participants.json", "w") as fout:
@@ -129,6 +153,13 @@ def read_traits(input_filenames_manuali,
 			data[row["SPEAKER"]]["features"][feat_name] += 1
 			# print(row["SPEAKER"])
 			# input()
+
+	for filename in input_filenames_automatici:
+		feat_name = filename.stem
+		# print(feat_name)
+		df = pd.read_excel(filename)
+		for index, row in df.iterrows(): #TODO check for x
+			data[row["SPEAKER"]]["features"][feat_name] += 1
 
 	for speaker in data:
 		if len(data[speaker]["features"]) > 0:
